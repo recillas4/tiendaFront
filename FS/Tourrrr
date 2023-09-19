@@ -1,0 +1,58 @@
+// mostrarTour.js
+
+class mostrarTour {
+    constructor(containerId) {
+        this.container = document.getElementById(containerId);
+        this.obtenerDatosDeLaBaseDeDatos();
+    }
+
+    obtenerDatosDeLaBaseDeDatos() {
+        // Realiza una solicitud AJAX para obtener los datos de la base de datos.
+        // Por ejemplo, usando la función fetch() en JavaScript para obtener datos de un servicio web o un archivo PHP.
+        fetch('ruta/a/tu_archivo_php.php')
+            .then(response => response.json()) // Supongamos que los datos se envían como JSON
+            .then(datos => this.mostrarCards(datos))
+            .catch(error => console.error('Error al obtener datos:', error));
+    }
+
+    mostrarCards(datos) {
+        datos.forEach(dato => {
+            const cardHtml = `
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">${dato.titulo}</h5>
+                            <p class="card-text">${dato.descripcion}</p>
+                        </div>
+                    </div>
+                </div>`;
+            this.container.innerHTML += cardHtml;
+        });
+    }
+}
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tours</title>
+    <!-- Incluye las referencias a Bootstrap CSS y otros estilos -->
+    <link rel="stylesheet" href="ruta/a/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Tours Disponibles</h1>
+        <div class="row" id="cardsContainer">
+            <!-- Las cards generadas dinámicamente se mostrarán aquí -->
+        </div>
+    </div>
+
+    <!-- Incluye el script de mostrarTour.js y crea una instancia -->
+    <script src="ruta/a/mostrarTour.js"></script>
+    <script>
+        // Crea una instancia de mostrarTour en la vista y especifica el ID del contenedor.
+        const tourInstance = new mostrarTour('cardsContainer');
+    </script>
+</body>
+</html>
