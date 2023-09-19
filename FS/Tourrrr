@@ -56,3 +56,58 @@ class mostrarTour {
     </script>
 </body>
 </html>
+
+
+createContainer(){
+    var ele="";
+    var cont=""; 
+    var aux="";
+    var aux1=0;
+    var alto=0;
+    var ancho=0;
+    var left=0;
+    var letra=0;
+        //document.getElementById(this.containerName).style.overflow="hidden";
+           
+        if (this.ancho>950){
+            ancho=this.ancho*.5;
+            alto=this.ancho*.1;
+            left=0;
+            letra=100;
+        }else{
+            
+            ancho=this.ancho*.95;
+            alto=this.ancho*.3;
+            left=0;
+            letra=80;
+        }
+        
+        document.getElementById(this.containerName).style.height=alto+"px";
+        document.getElementById(this.containerName).style.width=ancho+"px";
+        document.getElementById(this.containerName).style.left=left+"%";    
+        
+        
+        this.cardHeight=this.cardWidth*1.4;
+        //CONSTRUIR contenedor de la pagina
+            ele = document.createElement("div");
+            ele.setAttribute("data-obj",this.objIndex);
+            ele.setAttribute("class","container");
+            ele.setAttribute("id",this.containerName+"-ppal");
+            ele.setAttribute("style", "position:relative;width:100%;height:"+alto+"px;background-color:black;z-index:110;border:solid rgba(00,00,00,0) 1px;padding:100;overflow:hidden;border:solid 1px;border-radius:5px ");
+            
+            if(this.donde=="form"){
+                document.body.appendChild(ele);
+            }else{
+                document.getElementById(this.containerName).appendChild(ele);
+                
+              
+                
+            }
+            
+           
+     
+          
+    
+    return false;
+    
+    }
